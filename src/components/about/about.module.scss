@@ -1,0 +1,90 @@
+@use "../../index.scss" as global;
+
+.about_section {
+   color: global.$default-white;
+   letter-spacing: global.$default-letter-spacing;
+   width: global.$responsive-content-width;
+   margin: auto;
+
+   h1 {
+      color: global.$default-red;
+      font-size: 3rem;
+   }
+
+   h2 {
+      font-size: global.$extra-large-font-size;
+   }
+
+   h1,
+   h2 {
+      font-weight: normal;
+   }
+
+   p {
+      font-size: global.$large-font-size;
+      margin: 0;
+   }
+
+   h1,
+   h2,
+   p {
+      text-align: center;
+   }
+
+   .languages,
+   .technologies {
+      display: grid;
+      width: 75%;
+      margin: auto;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: global.$extra-large-gap;
+      border: 0.01rem solid rgb(40, 40, 40);
+      border-radius: global.$default-border-radius;
+
+      .list_item {
+         display: flex;
+         gap: global.$normal-gap;
+         flex-direction: column;
+         padding: global.$extra-large-gap;
+         border-radius: global.$default-border-radius;
+      }
+
+      .list_item,
+      .list_item>p {
+         @extend %transition;
+      }
+
+
+      .list_item>img {
+         margin: auto;
+         width: 5rem;
+         z-index: -1;
+         // filter: grayscale(1) invert(1);
+         height: 5rem;
+      }
+   }
+}
+
+@media screen and (max-width: 950px) {
+
+   .about_section>.languages,
+   .about_section>.technologies {
+      width: 100%;
+   }
+}
+
+@media screen and (max-width: 550px) {
+
+   .about_section>.languages,
+   .about_section>.technologies {
+      grid-template-columns: 1fr 1fr;
+   }
+}
+
+@media screen and (max-width: 400px) {
+
+   .about_section>.languages,
+   .about_section>.technologies {
+      grid-template-columns: auto;
+   }
+}

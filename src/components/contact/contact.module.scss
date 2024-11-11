@@ -1,0 +1,85 @@
+@use "../../index.scss" as global;
+
+.contact_section {
+   color: global.$default-white;
+   letter-spacing: global.$default-letter-spacing;
+   width: global.$responsive-content-width;
+   margin: auto;
+
+   a {
+      color: global.$default-white;
+      text-decoration: none;
+   }
+
+   h1 {
+      color: global.$default-red;
+      font-size: 3rem;
+   }
+
+   h2 {
+      font-size: global.$extra-large-font-size;
+   }
+
+   h1,
+   h2 {
+      font-weight: normal;
+   }
+
+   p {
+      font-size: global.$large-font-size;
+      margin: 0;
+   }
+
+   h1,
+   h2,
+   p {
+      text-align: center;
+   }
+
+   .contact_options {
+      display: grid;
+      margin: 3rem auto;
+      gap: global.$extra-large-gap;
+      grid-template-columns: repeat(4, auto);
+
+      .option>a {
+         display: flex;
+         align-items: center;
+         gap: global.$extra-large-gap;
+         flex-direction: column;
+         padding: 1rem;
+         border: 0.01rem solid rgb(40, 40, 40);
+         border-radius: global.$default-border-radius;
+      }
+
+      .option>a>svg {
+         height: 3rem;
+         width: 3rem;
+      }
+
+      .option>a,
+      .option>a>p {
+         @extend %transition;
+      }
+
+      .option>a:hover {
+         background-color: rgb(10, 10, 10);
+      }
+
+      .option>a:hover p {
+         color: global.$default-red;
+      }
+   }
+}
+
+@media screen and (max-width: 900px) {
+   .contact_section>.contact_options {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .contact_section>.contact_options {
+      grid-template-columns: 1fr;
+   }
+}

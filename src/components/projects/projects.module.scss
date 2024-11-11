@@ -1,0 +1,110 @@
+@use "../../index.scss" as global;
+
+.projects_section {
+   color: global.$default-white;
+   letter-spacing: global.$default-letter-spacing;
+   width: global.$responsive-content-width;
+   margin: auto;
+
+   h1 {
+      color: global.$default-red;
+      text-align: center;
+      font-size: 3rem;
+   }
+
+   h2 {
+      font-size: global.$extra-large-font-size;
+   }
+
+   &>p:nth-of-type(1) {
+      text-align: center;
+      font-size: global.$large-font-size;
+   }
+
+   h1,
+   h2,
+   h3 {
+      font-weight: normal;
+   }
+
+   .project_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: global.$large-gap;
+
+      .project {
+         display: grid;
+         grid-template-rows: subgrid;
+         padding: 2rem;
+         grid-row: span 6;
+         border: 0.01rem solid rgb(40, 40, 40);
+         border-radius: global.$default-border-radius;
+         @extend %transition;
+      }
+
+      .project:hover {
+         box-shadow: global.$default-box-shadow;
+      }
+
+      .project>h2 {
+         border-bottom: 0.01rem solid rgb(40, 40, 40);
+         @extend %transition;
+      }
+
+      .project>h3 {
+         font-weight: bold;
+      }
+
+      .project:hover>h2 {
+         color: global.$default-red;
+         border-bottom: 0.01rem solid global.$default-red;
+      }
+
+      .project>.technologies>p {
+         height: min-content;
+      }
+
+      .project>p>b {
+         color: global.$default-red;
+      }
+
+      .project>.technologies {
+         display: flex;
+         flex-wrap: wrap;
+         gap: global.$normal-gap;
+      }
+
+      .technologies>p {
+         padding: global.$small-gap;
+         background-color: rgb(40, 40, 40);
+         border: global.$default-border;
+         border-radius: global.$default-border-radius;
+         margin: 0;
+      }
+   }
+
+   .links {
+      display: flex;
+      gap: global.$extra-large-gap;
+
+      &>a {
+         font-size: global.$extra-large-font-size;
+         color: global.$default-white;
+         @extend %transition;
+      }
+
+      &>a:hover {
+         color: global.$default-red;
+      }
+   }
+}
+
+@media screen and (max-width: 400px) {
+   .projects_section>.project_list {
+      grid-template-columns: 1fr;
+
+      .project {
+         padding: global.$extra-large-gap;
+      }
+   }
+}

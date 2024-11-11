@@ -1,0 +1,29 @@
+@use "../../index.scss" as global;
+
+.intro_section {
+   width: 100%;
+   margin: 10rem auto;
+   color: global.$default-white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   letter-spacing: global.$default-letter-spacing;
+
+   h1 {
+      font-weight: normal;
+      margin: 0;
+      font-size: 4rem;
+      text-align: center;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .intro_section {
+      width: global.$responsive-content-width;
+      margin: 10rem auto 5rem;
+
+      h1 {
+         font-size: global.$extra-large-font-size;
+      }
+   }
+}

@@ -1,0 +1,109 @@
+@use "../../index.scss" as global;
+
+nav {
+   color: global.$default-white;
+   background-color: global.$default-black;
+   display: flex;
+   justify-content: space-between;
+   padding: global.$extra-large-gap;
+   align-items: center;
+   letter-spacing: global.$default-letter-spacing;
+
+   h1 {
+      margin: 0;
+      font-weight: normal;
+      position: relative;
+      font-size: global.$extra-large-font-size;
+      @extend %underline;
+   }
+
+   h1,
+   h1::before {
+      @extend %transition;
+   }
+
+   label {
+      cursor: pointer;
+      z-index: 1;
+      @extend %transition;
+   }
+
+   label,
+   input[type="checkbox"] {
+      display: none;
+   }
+
+   ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: global.$extra-large-gap;
+      @extend %transition;
+
+      li {
+         cursor: pointer;
+         position: relative;
+         padding: global.$normal-gap 0;
+         @extend %underline;
+      }
+
+      li>a {
+         color: global.$default-white;
+         text-decoration: none;
+         @extend %transition;
+      }
+
+      li:hover>a {
+         color: global.$default-red;
+      }
+
+      li,
+      li::before {
+         @extend %transition;
+      }
+   }
+}
+
+@media screen and (max-width: 600px) {
+   nav {
+      position: fixed;
+      top: 0;
+      width: calc(100% - (global.$extra-large-gap * 2));
+      border-bottom: global.$default-border;
+
+      label {
+         display: block;
+         font-size: global.$large-font-size;
+         padding: global.$normal-gap;
+      }
+
+      ul {
+         position: fixed;
+         top: 4.85rem;
+         width: 100%;
+         left: -100%;
+         height: 100dvh;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background-color: global.$default-black;
+      }
+
+      ul>li {
+         font-size: global.$large-font-size;
+      }
+
+      ul>li::before {
+         height: 0.2rem !important;
+      }
+
+      #checkbox:checked~label {
+         color: global.$default-red;
+      }
+
+      #checkbox:checked~ul {
+         left: 0;
+      }
+   }
+}
